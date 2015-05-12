@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import org.opencv.core.Mat;
+import org.opencv.highgui.Highgui;
+
 
 
 
@@ -78,7 +81,7 @@ public class Imagesfromfolder {
 				bufimages.add(temp);
 				
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("Error loading the image");
 			}
 			
 			
@@ -87,5 +90,35 @@ public class Imagesfromfolder {
 		return bufimages;
 		
 	}
+	
+	public static ArrayList<Mat> getimagesMat()
+	{
+		if(!ruta.isDirectory())
+			System.out.println("Not a directory");
+		if(!ruta.exists())
+			System.out.println("File doesn't exist");
+		
+		File[] f = ruta.listFiles();
+		ArrayList<Mat> Matimages = new ArrayList<Mat>();
+		
+		for (File file : f)
+		{
+			Mat temp = null;
+			
+			try{
+				String path = file.toString();
+				temp = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_GRAYSCALE);
+				Matimages.add(temp);
+				
+			}catch (Exception e){
+				System.out.println("Error loading the image");
+			}
+		}
+		
+		return Matimages;
+		
+		
+	}
+	
 
 }

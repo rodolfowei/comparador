@@ -17,7 +17,7 @@ public class Aplicacion {
 
 		for(BufferedImage bufim : images)
 		{
-			System.out.println(bufim.getWidth());
+			System.out.print(bufim.getWidth()+ "  ");
 			System.out.println(bufim.getHeight());
 		}
 	}

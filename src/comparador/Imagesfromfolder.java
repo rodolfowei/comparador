@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.highgui.Highgui;
 
@@ -18,6 +19,8 @@ import org.opencv.highgui.Highgui;
  */
 
 public class Imagesfromfolder {
+	
+	static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 	
 	static final File ruta = new File ("C:/Users/CARLOS/Desktop/imagenes");
 	
@@ -73,10 +76,10 @@ public class Imagesfromfolder {
 			try {
 				temp = ImageIO.read(file);
 				
-				System.out.println("image: " + file.getName());
-				System.out.println("width: " + temp.getWidth());
-				System.out.println("height: " + temp.getHeight());
-				System.out.println("size: " + file.length());
+				System.out.println("Image:  " + file.getName());
+				System.out.println("Width:  " + temp.getWidth());
+				System.out.println("Height: " + temp.getHeight());
+				System.out.println("Size:  " + file.length());
 				
 				bufimages.add(temp);
 				

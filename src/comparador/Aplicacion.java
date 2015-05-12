@@ -3,6 +3,8 @@ package comparador;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+//Change to test gitHub
+
 public class Aplicacion {
 
 	public static void main(String[] args) {

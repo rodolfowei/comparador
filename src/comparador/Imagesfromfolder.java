@@ -56,7 +56,7 @@ public class Imagesfromfolder {
 		
 	}
 	
-	public static ArrayList<BufferedImage> getimages ()
+	public static ArrayList<BufferedImage> getBufferedimages ()
 	{
 		
 		
@@ -97,7 +97,7 @@ public class Imagesfromfolder {
 		
 	}
 	
-	public static ArrayList<Mat> getimagesMat()
+	public static ArrayList<Mat> getMatimages()
 	{
 		if(!ruta.isDirectory())
 			System.out.println("Not a directory");

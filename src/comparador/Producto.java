@@ -1,6 +1,10 @@
 package comparador;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfKeyPoint;
@@ -10,6 +14,7 @@ import org.opencv.highgui.Highgui;
 
 public class Producto {
 
+	BufferedImage prodimage;
 	String path;
 	String productname;
 	Mat product_descriptors;
@@ -43,6 +48,21 @@ public class Producto {
 	public Mat getDescriptors()
 	{
 		return product_descriptors;
+	}
+	
+	public void setBufimage(String path_prod){
+		File bufim = new File(path_prod);
+		try {
+			prodimage = ImageIO.read(bufim);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public BufferedImage obtainBuffimage(){
+		return prodimage;
+		
 	}
 	
 	public String getPath(){

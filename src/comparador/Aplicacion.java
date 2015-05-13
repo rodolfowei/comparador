@@ -8,12 +8,6 @@ import java.util.ArrayList;
 
 
 
-
-
-
-
-
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -61,12 +55,13 @@ public class Aplicacion {
 		}
 		*/
 		
-		BufferedImage in_image;
+		BufferedImage in_image = null;
 		BufferedImage match_image;
-		String in_imagePath = args[1];
+		String in_imagePath = "C:/Users/CARLOS/Desktop/ref_image/amstel1.jpg";
 		Matcomparison comparador = new Matcomparison();
 		Producto encontrado = comparador.obtainbestmatch(in_imagePath);
 		
+		/*
 		File in_file = new File(in_imagePath);
 		try {
 			in_image = ImageIO.read(in_file);
@@ -80,13 +75,16 @@ public class Aplicacion {
 		//Now we have to print both of the images to see if the match is correct
 		
 		
+		Displayim mydisplay = new Displayim(in_image, match_image);
+		mydisplay.setVisible(true);
 		
 		 
-		
+		*/
 		
 		
 	}
-	
+	/*Este metodo no lo utilizamos ya que creamos una clase especifica para ello
+	 * 
 	public void displaymatch(BufferedImage inimage, BufferedImage topmatcher){
 		
 		JFrame displayingframe = new JFrame("Product matched");
@@ -104,5 +102,5 @@ public class Aplicacion {
 		
 		
 	}
-
+	*/
 }

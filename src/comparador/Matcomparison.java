@@ -60,7 +60,10 @@ public class Matcomparison {
 		detector.detect(in_image, in_keypoints);
 		extractor.compute(in_image, in_keypoints, in_descriptors);
 		
-		System.out.println("in_image Analizada");
+		//Just to obtain the name of the file currently being used
+		File toname = new File(imagepath);
+		
+		System.out.println("in_image Analizada:   "+ toname.getName() + "\n");
 		
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		//
@@ -82,7 +85,7 @@ public class Matcomparison {
 		
 		
 		for(Producto prod : productos){
-			System.out.println("Analizando imagen" + prod.path);
+			System.out.print("Analizando imagen" + prod.productname);
 			MatOfDMatch matches = new MatOfDMatch();
 			matcher.match(in_descriptors, prod.getDescriptors(),matches);
 			
@@ -90,11 +93,11 @@ public class Matcomparison {
 			List<DMatch> listofmatches = matches.toList();
 			int numberofcoincidences = 0;
 			for(DMatch dm: listofmatches){
-				if(dm.distance < 0.35){
+				if(dm.distance < 40){
 					numberofcoincidences++;
 				}
 			}
-			System.out.println("\t Number of matches: " + numberofcoincidences);
+			System.out.print("\t Number of matches: " + numberofcoincidences + "\n");
 			
 			if(numberofcoincidences > similaridad){
 				similaridad = numberofcoincidences;

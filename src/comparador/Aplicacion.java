@@ -19,7 +19,8 @@ public class Aplicacion {
 	public static void main(String[] args) {
 		
 		
-		
+		// Previous code probably unnecessary, was just to check if the methods to 
+		//charge images where working fine.
 		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
 		images = Imagesfromfolder.getimages();
 		

@@ -20,8 +20,8 @@ public class Producto {
 	Mat product_descriptors;
 	FeatureDetector detector;
 	DescriptorExtractor extractor;
-	static int detecting_method = FeatureDetector.SURF;
-	static int extracting_method = DescriptorExtractor.SURF;
+	static int detecting_method = FeatureDetector.SIFT;
+	static int extracting_method = DescriptorExtractor.SIFT;
 	
 	public Producto() {
 		this.detector = FeatureDetector.create(detecting_method);

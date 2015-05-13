@@ -23,13 +23,13 @@ public class Matcomparison {
 	//a folder full of images and determine which image is the most similar one
 	 
 	FeatureDetector detector;
-	int detection_method = FeatureDetector.SURF;
+	int detection_method = FeatureDetector.SIFT;
 	
     //Here we will test the different feature extraction methods in terms of time consumption and
 	//Accuracy 
 	
 	DescriptorExtractor extractor;
-	int extraction_method = DescriptorExtractor.SURF;
+	int extraction_method = DescriptorExtractor.SIFT;
 		
 	//Here we have also the possibility of implementing different matching methods
 	
@@ -93,7 +93,7 @@ public class Matcomparison {
 			List<DMatch> listofmatches = matches.toList();
 			int numberofcoincidences = 0;
 			for(DMatch dm: listofmatches){
-				if(dm.distance < 40){
+				if(dm.distance < 100){
 					numberofcoincidences++;
 				}
 			}

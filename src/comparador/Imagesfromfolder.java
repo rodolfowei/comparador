@@ -71,6 +71,9 @@ public class Imagesfromfolder {
 		
 		for (File file : f)
 		{
+			if (file != null & file.getName().toLowerCase().endsWith(".jpg"))
+			{
+			
 			BufferedImage temp = null;
 			
 			try {
@@ -87,7 +90,7 @@ public class Imagesfromfolder {
 				System.out.println("Error loading the image");
 			}
 			
-			
+			}
 		}
 		
 		return bufimages;
@@ -106,6 +109,9 @@ public class Imagesfromfolder {
 		
 		for (File file : f)
 		{
+			if (file != null & file.getName().toLowerCase().endsWith(".jpg"))
+			{
+			
 			Mat temp = null;
 			
 			try{
@@ -115,6 +121,7 @@ public class Imagesfromfolder {
 				
 			}catch (Exception e){
 				System.out.println("Error loading the image");
+			}
 			}
 		}
 		

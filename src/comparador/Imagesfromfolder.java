@@ -1,3 +1,4 @@
+
 package comparador;
 
 import java.awt.image.BufferedImage;
@@ -7,8 +8,9 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-//import org.opencv.core.Mat;
-//import org.opencv.highgui.Highgui;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.highgui.Highgui;
 
 
 
@@ -18,6 +20,8 @@ import javax.imageio.ImageIO;
  */
 
 public class Imagesfromfolder {
+	
+	static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 	
 	static final File ruta = new File ("C:/Users/CARLOS/Desktop/imagenes");
 	
@@ -53,7 +57,7 @@ public class Imagesfromfolder {
 		
 	}
 	
-	public static ArrayList<BufferedImage> getimages ()
+	public static ArrayList<BufferedImage> getBufferedimages ()
 	{
 		
 		
@@ -68,29 +72,65 @@ public class Imagesfromfolder {
 		
 		for (File file : f)
 		{
+			if (file != null & file.getName().toLowerCase().endsWith(".jpg"))
+			{
+			
 			BufferedImage temp = null;
 			
 			try {
 				temp = ImageIO.read(file);
 				
-				System.out.print("image: " + file.getName() + "  ");
-				System.out.print("width: " + temp.getWidth() + "  ");
-				System.out.print("height: " + temp.getHeight()+ "  ");
-				System.out.println("size: " + file.length());
+				System.out.println("Image:  " + file.getName());
+				System.out.println("Width:  " + temp.getWidth());
+				System.out.println("Height: " + temp.getHeight());
+				System.out.println("Size:  " + file.length());
 				
 				bufimages.add(temp);
 				
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("Error loading the image");
 			}
 			
-			
+			}
 		}
 		
 		return bufimages;
 		
 	}
 	
-
+	public static ArrayList<Mat> getMatimages()
+	{
+		if(!ruta.isDirectory())
+			System.out.println("Not a directory");
+		if(!ruta.exists())
+			System.out.println("File doesn't exist");
+		
+		File[] f = ruta.listFiles();
+		ArrayList<Mat> Matimages = new ArrayList<Mat>();
+		
+		for (File file : f)
+		{
+			if (file != null & file.getName().toLowerCase().endsWith(".jpg"))
+			{
+			
+			Mat temp = null;
+			
+			try{
+				String path = file.toString();
+				temp = Highgui.imread(path, Highgui.CV_LOAD_IMAGE_GRAYSCALE);
+				Matimages.add(temp);
+				
+			}catch (Exception e){
+				System.out.println("Error loading the image");
+			}
+			}
+		}
+		
+		return Matimages;
+		
+		
+	}
+	
 
 }
+

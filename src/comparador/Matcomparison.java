@@ -1,10 +1,15 @@
 package comparador;
 
+
+import java.util.List;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDMatch;
 import org.opencv.core.MatOfKeyPoint;
+import org.opencv.features2d.DMatch;
 import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.DescriptorMatcher;
 import org.opencv.features2d.FeatureDetector;
@@ -39,12 +44,16 @@ public class Matcomparison {
 		this.matcher = DescriptorMatcher.create(matching_method);
 	}
 	
-	//The argument is the path to the image we set as the input
-	public Mat obtainbestmatch(String imagepath)
+	//The argument is the path to the image we set as the input (the image data Base is already known (ruta)
+	
+	//Think about returning a product instead of a mat then with the producto.path we can recover
+	//the product and display it to see if the match is ok.
+	public Producto obtainbestmatch(String imagepath)
 	{
 		System.out.println("Analizando in_image");
 		
-		Mat topmatcher = null;
+		int similaridad = -1;
+		Producto topmatcher = new Producto();
 		Mat in_image = Highgui.imread(imagepath);
 		MatOfKeyPoint in_keypoints = new MatOfKeyPoint();
 		Mat in_descriptors = new Mat();
@@ -53,15 +62,57 @@ public class Matcomparison {
 		
 		System.out.println("in_image Analizada");
 		
-		MatOfDMatch matches = new MatOfDMatch();
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		//
+		ArrayList<String> imagepaths;
+		try {
+			imagepaths = Imagesfromfolder.getAllImages();
+			
+			for(int i=0; i< imagepaths.size();i++){
+				Producto temp = new Producto();
+				temp.path = imagepaths.get(i);
+				temp.setDescriptors(temp.path);
+				temp.setName(temp.path);
+				productos.add(temp);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
+		for(Producto prod : productos){
+			System.out.println("Analizando imagen" + prod.path);
+			MatOfDMatch matches = new MatOfDMatch();
+			matcher.match(in_descriptors, prod.getDescriptors(),matches);
+			
+						
+			List<DMatch> listofmatches = matches.toList();
+			int numberofcoincidences = 0;
+			for(DMatch dm: listofmatches){
+				if(dm.distance < 0.35){
+					numberofcoincidences++;
+				}
+			}
+			System.out.println("\t Number of matches: " + numberofcoincidences);
+			
+			if(numberofcoincidences > similaridad){
+				similaridad = numberofcoincidences;
+				topmatcher = prod;
+				System.out.println("new top matcher: " + topmatcher.path);
+			}
+			
+		}
+		
+		//If there is no match with any product in the data base
+		if(similaridad == 0){
+			System.out.println(" NO MATCHES HAVE BEEN FOUND");
+		}else{
+			System.out.println(" The product is : " + topmatcher.getName());
+		}
 		
 		
-		
-		
-		
-		return null;
+		return topmatcher;
 		
 	}
 	

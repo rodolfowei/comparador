@@ -23,18 +23,18 @@ public class Matcomparison {
 	//a folder full of images and determine which image is the most similar one
 	 
 	FeatureDetector detector;
-	int detection_method = FeatureDetector.ORB;
+	int detection_method = FeatureDetector.SURF;
 	
     //Here we will test the different feature extraction methods in terms of time consumption and
 	//Accuracy 
 	
 	DescriptorExtractor extractor;
-	int extraction_method = DescriptorExtractor.ORB;
+	int extraction_method = DescriptorExtractor.SURF;
 		
 	//Here we have also the possibility of implementing different matching methods
 	
 	DescriptorMatcher matcher;
-	int matching_method = DescriptorMatcher.BRUTEFORCE_HAMMING;
+	int matching_method = DescriptorMatcher.FLANNBASED;
 	
 	
 	public Matcomparison()

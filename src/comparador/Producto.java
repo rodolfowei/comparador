@@ -21,7 +21,7 @@ public class Producto {
 	FeatureDetector detector;
 	DescriptorExtractor extractor;
 	static int detecting_method = FeatureDetector.SIFT;
-	static int extracting_method = DescriptorExtractor.SIFT;
+	static int extracting_method = DescriptorExtractor.OPPONENT_SIFT;
 	
 	public Producto() {
 		this.detector = FeatureDetector.create(detecting_method);

@@ -29,7 +29,7 @@ public class Matcomparison {
 	//Accuracy 
 	
 	DescriptorExtractor extractor;
-	int extraction_method = DescriptorExtractor.SIFT;
+	int extraction_method = DescriptorExtractor.OPPONENT_SIFT;
 		
 	//Here we have also the possibility of implementing different matching methods
 	

@@ -57,7 +57,7 @@ public class Aplicacion {
 		
 		BufferedImage in_image = null;
 		BufferedImage match_image;
-		String in_imagePath = "C:/Users/CARLOS/Desktop/ref_image/amstelref.jpg";
+		String in_imagePath = "C:/Users/CARLOS/Desktop/ref_image/cocacola_2.jpg";
 		Matcomparison comparador = new Matcomparison();
 		Producto encontrado = comparador.obtainbestmatch(in_imagePath);
 		

@@ -123,13 +123,11 @@ public class Matcomparison {
 		
 	}
 	
-	public ArrayList<Producto>  obtain_matches_in_order(String imagepath){
+	public Producto[]  obtain_matches_in_order(String imagepath){
 		
 		System.out.println("Analizando in_image");
 		
 		//Here we anaize the input image
-		int similaridad = -1;
-		Producto topmatcher = new Producto();
 		Mat in_image = Highgui.imread(imagepath);
 		MatOfKeyPoint in_keypoints = new MatOfKeyPoint();
 		Mat in_descriptors = new Mat();
@@ -159,7 +157,7 @@ public class Matcomparison {
 		}
 		
 		for(Producto prod : productos){
-			System.out.print("Analizando imagen" + prod.productname);
+			System.out.println("Analizando imagen" + prod.productname);
 			MatOfDMatch matches = new MatOfDMatch();
 			matcher.match(in_descriptors, prod.getDescriptors(),matches);
 			
@@ -172,7 +170,7 @@ public class Matcomparison {
 				}
 			}
 			prod.setSimilaridad(numberofcoincidences);
-			System.out.print("\t Number of matches: " + numberofcoincidences + "\n");
+			//System.out.print("\t Number of matches: " + numberofcoincidences + "\n");
 			
 		}
 		
@@ -180,11 +178,13 @@ public class Matcomparison {
 		
 	    Producto[] ordenados = productos.toArray(new Producto[productos.size()]);
 	    Arrays.sort(ordenados);
+		for (Producto ord : ordenados) {
+			System.out.println(ord.getName()+" has " +ord.getSimilaridad() + " matches ");
+		}
 		
 		
 		
-		
-		return null;
+		return ordenados;
 		
 	}
 	

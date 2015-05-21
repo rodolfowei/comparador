@@ -1,21 +1,21 @@
 package comparador;
 
-import java.awt.Window;
+//import java.awt.Window;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+//import java.io.File;
+//import java.io.IOException;
+//import java.util.ArrayList;
 
 
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.WindowConstants;
+//import javax.imageio.ImageIO;
+//import javax.swing.ImageIcon;
+//import javax.swing.JFrame;
+//import javax.swing.JLabel;
+//import javax.swing.WindowConstants;
 
 import org.opencv.core.Core;
-import org.opencv.core.Mat;
+//import org.opencv.core.Mat;
 
 //Change to test gitHub
 //Second change

@@ -93,7 +93,7 @@ public class Matcomparison {
 			List<DMatch> listofmatches = matches.toList();
 			int numberofcoincidences = 0;
 			for(DMatch dm: listofmatches){
-				if(dm.distance < 100){
+				if(dm.distance < 300){
 					numberofcoincidences++;
 				}
 			}

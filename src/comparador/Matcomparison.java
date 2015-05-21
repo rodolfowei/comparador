@@ -2,6 +2,7 @@ package comparador;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
@@ -157,7 +158,7 @@ public class Matcomparison {
 		}
 		
 		for(Producto prod : productos){
-			System.out.println("Analizando imagen" + prod.productname);
+			//System.out.println("Analizando imagen" + prod.productname);
 			MatOfDMatch matches = new MatOfDMatch();
 			matcher.match(in_descriptors, prod.getDescriptors(),matches);
 			
@@ -177,7 +178,7 @@ public class Matcomparison {
 		//Here the products are sorted in order of similarity, Quicksort_Algorithm
 		
 	    Producto[] ordenados = productos.toArray(new Producto[productos.size()]);
-	    Arrays.sort(ordenados);
+	    Arrays.sort(ordenados,Collections.reverseOrder());
 		for (Producto ord : ordenados) {
 			System.out.println(ord.getName()+" has " +ord.getSimilaridad() + " matches ");
 		}

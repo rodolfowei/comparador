@@ -12,7 +12,7 @@ import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.FeatureDetector;
 import org.opencv.highgui.Highgui;
 
-public class Producto {
+public class Producto implements Comparable<Producto> {
 
 	BufferedImage prodimage;
 	String path;
@@ -20,9 +20,14 @@ public class Producto {
 	Mat product_descriptors;
 	FeatureDetector detector;
 	DescriptorExtractor extractor;
+	
+	//Variable to count the number of matches.
+	private int similaridad;
+
 	static int detecting_method = FeatureDetector.SIFT;
 	static int extracting_method = DescriptorExtractor.OPPONENT_SIFT;
 	
+		
 	public Producto() {
 		this.detector = FeatureDetector.create(detecting_method);
 		this.extractor = DescriptorExtractor.create(extracting_method);
@@ -77,6 +82,31 @@ public class Producto {
 	
 	public String getName(){
 		return productname;
+	}
+
+
+
+	int getSimilaridad() {
+		return similaridad;
+	}
+
+
+
+	void setSimilaridad(int similaridad) {
+		this.similaridad = similaridad;
+	}
+
+
+
+	@Override
+	public int compareTo(Producto prod) {
+		if(similaridad < prod.similaridad){
+			return -1;
+		}
+		if(similaridad > prod.similaridad){
+			return 1;
+		}
+		return 0;
 	}
 	
 	

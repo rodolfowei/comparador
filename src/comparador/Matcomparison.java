@@ -1,10 +1,14 @@
 package comparador;
 
 
+import java.util.Arrays;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
+import java.io.LineNumberInputStream;
 import java.util.ArrayList;
+
+import javax.lang.model.type.ArrayType;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDMatch;
@@ -116,6 +120,71 @@ public class Matcomparison {
 		
 		
 		return topmatcher;
+		
+	}
+	
+	public ArrayList<Producto>  obtain_matches_in_order(String imagepath){
+		
+		System.out.println("Analizando in_image");
+		
+		//Here we anaize the input image
+		int similaridad = -1;
+		Producto topmatcher = new Producto();
+		Mat in_image = Highgui.imread(imagepath);
+		MatOfKeyPoint in_keypoints = new MatOfKeyPoint();
+		Mat in_descriptors = new Mat();
+		detector.detect(in_image, in_keypoints);
+		extractor.compute(in_image, in_keypoints, in_descriptors);
+		
+		//Just to obtain the name of the file currently being used
+		File toname = new File(imagepath);
+		System.out.println("in_image Analizada:   "+ toname.getName() + "\n");
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		//
+		ArrayList<String> imagepaths;
+		try {
+			imagepaths = Imagesfromfolder.getAllImages();
+			
+			for(int i=0; i< imagepaths.size();i++){
+				Producto temp = new Producto();
+				temp.path = imagepaths.get(i);
+				temp.setDescriptors(temp.path);
+				temp.setName(temp.path);
+				productos.add(temp);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(Producto prod : productos){
+			System.out.print("Analizando imagen" + prod.productname);
+			MatOfDMatch matches = new MatOfDMatch();
+			matcher.match(in_descriptors, prod.getDescriptors(),matches);
+			
+						
+			List<DMatch> listofmatches = matches.toList();
+			int numberofcoincidences = 0;
+			for(DMatch dm: listofmatches){
+				if(dm.distance < 300){
+					numberofcoincidences++;
+				}
+			}
+			prod.setSimilaridad(numberofcoincidences);
+			System.out.print("\t Number of matches: " + numberofcoincidences + "\n");
+			
+		}
+		
+		//Here the products are sorted in order of similarity, Quicksort_Algorithm
+		
+	    Producto[] ordenados = productos.toArray(new Producto[productos.size()]);
+	    Arrays.sort(ordenados);
+		
+		
+		
+		
+		return null;
 		
 	}
 	

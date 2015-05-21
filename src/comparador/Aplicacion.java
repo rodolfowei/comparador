@@ -29,31 +29,7 @@ public class Aplicacion {
 	public static void main(String[] args) {
 		
 		
-		// Previous code probably unnecessary, was just to check if the methods to 
-		//charge images where working fine.
-		/*
-		ArrayList<BufferedImage> images = new ArrayList<BufferedImage>();
-		images = Imagesfromfolder.getBufferedimages();
-		
-		ArrayList<Mat> imagesOcv = new ArrayList<Mat>();
-		imagesOcv = Imagesfromfolder.getMatimages();
-		
-		System.out.println("Imprimiendo nombres y tamaño de las imagenes");
-
-		for(BufferedImage bufim : images)
-		{
-			System.out.print(bufim.getWidth()+ "  ");
-			System.out.println(bufim.getHeight());
-		}
-		
-		System.out.println("Imprimiendo nombres y tamaño de las imagenes");
-		
-		for (Mat matim : imagesOcv)
-		{
-			System.out.print("COLS:   " + matim.cols() + "  ");
-			System.out.println("ROWS:   " + matim.rows());
-		}
-		*/
+	
 		
 		BufferedImage in_image = null;
 		BufferedImage match_image;
@@ -61,46 +37,8 @@ public class Aplicacion {
 		Matcomparison comparador = new Matcomparison();
 		Producto encontrado = comparador.obtainbestmatch(in_imagePath);
 		
-		/*
-		File in_file = new File(in_imagePath);
-		try {
-			in_image = ImageIO.read(in_file);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		match_image = encontrado.obtainBuffimage();
-		
-		//Now we have to print both of the images to see if the match is correct
-		
-		
-		Displayim mydisplay = new Displayim(in_image, match_image);
-		mydisplay.setVisible(true);
-		
-		 
-		*/
-		
-		
+	
 	}
-	/*Este metodo no lo utilizamos ya que creamos una clase especifica para ello
-	 * 
-	public void displaymatch(BufferedImage inimage, BufferedImage topmatcher){
 		
-		JFrame displayingframe = new JFrame("Product matched");
-		displayingframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		BufferedImage imagein = inimage;
-		BufferedImage imageout = topmatcher;
-		
-		ImageIcon imageinicon = new ImageIcon(imagein);
-		ImageIcon imageouticon = new ImageIcon(imageout);
-		
-		JLabel labelimagen = new JLabel();
-		labelimagen.setIcon(imageinicon);
-		labelimagen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-		
-		
-		
-	}
-	*/
+	
 }

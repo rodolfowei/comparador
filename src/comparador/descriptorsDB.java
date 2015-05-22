@@ -8,7 +8,7 @@ public class descriptorsDB {
 	Connection conexionDB;
 	Statement st;
 	
-	public de
+	//public de
 	
 	
 	

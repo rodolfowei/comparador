@@ -6,20 +6,16 @@ import java.util.Collections;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
-import java.io.LineNumberInputStream;
 import java.util.ArrayList;
-
-import javax.lang.model.type.ArrayType;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfDMatch;
 import org.opencv.core.MatOfKeyPoint;
-import org.opencv.features2d.
-//import org.opencv.features2d.DMatch;
+import org.opencv.features2d.DMatch;
 import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.DescriptorMatcher;
 import org.opencv.features2d.FeatureDetector;
-//import org.opencv.highgui.Highgui;
+import org.opencv.highgui.Highgui;
 
 public class Matcomparison {
 

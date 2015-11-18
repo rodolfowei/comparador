@@ -22,24 +22,24 @@ import org.opencv.highgui.Highgui;
 
 public class Matcomparison {
 
-	static final File ruta = new File ("C:/Users/CARLOS/Desktop/imagenes");
+	static final File ruta = new File ("C:/Users/CARLOSR/Desktop/Imagenes/Muestra");
 	
 	// This class will allow to implement a method that can compare an input images with
 	//a folder full of images and determine which image is the most similar one
 	 
 	FeatureDetector detector;
-	int detection_method = FeatureDetector.SIFT;
+	int detection_method = FeatureDetector.ORB;
 	
     //Here we will test the different feature extraction methods in terms of time consumption and
 	//Accuracy 
 	
 	DescriptorExtractor extractor;
-	int extraction_method = DescriptorExtractor.OPPONENT_SIFT;
+	int extraction_method = DescriptorExtractor.ORB;
 		
 	//Here we have also the possibility of implementing different matching methods
 	
 	DescriptorMatcher matcher;
-	int matching_method = DescriptorMatcher.FLANNBASED;
+	int matching_method = DescriptorMatcher.BRUTEFORCE_HAMMING;
 	
 	
 	public Matcomparison()
@@ -98,7 +98,7 @@ public class Matcomparison {
 			List<DMatch> listofmatches = matches.toList();
 			int numberofcoincidences = 0;
 			for(DMatch dm: listofmatches){
-				if(dm.distance < 300){
+				if(dm.distance < 35){
 					numberofcoincidences++;
 				}
 			}
@@ -166,7 +166,7 @@ public class Matcomparison {
 			List<DMatch> listofmatches = matches.toList();
 			int numberofcoincidences = 0;
 			for(DMatch dm: listofmatches){
-				if(dm.distance < 300){
+				if(dm.distance < 0.05){
 					numberofcoincidences++;
 				}
 			}

@@ -23,7 +23,7 @@ public class Imagesfromfolder {
 	
 	static{ System.loadLibrary(Core.NATIVE_LIBRARY_NAME);}
 	
-	static final File ruta = new File ("C:/Users/CARLOS/Desktop/imagenes");
+	static final File ruta = new File ("C:/Users/CARLOSR/Desktop/Imagenes/Muestra");
 	
 	public static ArrayList<String> getAllImages() throws IOException
 	{

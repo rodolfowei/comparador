@@ -24,8 +24,8 @@ public class Producto implements Comparable<Producto> {
 	//Variable to count the number of matches.
 	private int similaridad;
 
-	static int detecting_method = FeatureDetector.SIFT;
-	static int extracting_method = DescriptorExtractor.OPPONENT_SIFT;
+	static int detecting_method = FeatureDetector.ORB;
+	static int extracting_method = DescriptorExtractor.ORB;
 	
 		
 	public Producto() {
